@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue Tracker | Log in</title>
+
+  <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+  <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- tailwind CSS & Daisyui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  
+  <!-- stylesheet -->
+    <link rel="stylesheet" href="style/styles.css">
+    
+</head>
+
+<body class="bg-[#F8FAFC] pt-12 ">
+
+  <div class="login-form bg-white w-4/9 mx-auto space-y-8 pt-8 shadow-xl">
+    <div class="upper-form flex items-center w-11/12 flex-col ">
+      <img src="./assets/github-logo.png" alt="" srcset="">
+      <h2 class="font-bold text-xl">GitHub Issues Tracker</h2>
+      <p  class="text-[14px] text-[gray] text-sm">Sign in to manage your issues</p>
+    </div>
+
+    <div class="mid-form flex justify-center">
+      <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs p-4">
+
+      <label class="label text-black font-bold">Username</label>
+      <input id="userName" type="text" class="input" placeholder="Enter Username" />
+
+      <label class="label text-black font-bold">Password</label>
+      <input id="userPassword" type="text" class="input" placeholder="Enter Password" />
+    </fieldset>
+    </div>
+
+    <div class="signin-btn flex justify-center">
+      <button id="login-btn" class="btn bg-[#0967C2] text-white border-[#4A00FF] w-11/12">Sign In</button>
+    </div>
+
+    <div class="line"><fieldset class="custom line mx-auto text-center   border-t-2 w-11/12">
+      <legend class="">OR</legend>
+    </fieldset></div>
+
+    <div class="low-form mx-auto text-center pb-8">
+        <p class="text-gray ">Demo Credentials</p>
+        <h2><span class="font-bold">Username:</span> admin <br>
+        <span class="font-bold">Password:</span> admin123</h2>
+    </div>
+  </div>
+  
+  <script src="./js/home.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>
