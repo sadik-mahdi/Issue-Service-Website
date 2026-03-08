@@ -22,48 +22,58 @@
     
     
 </head>
-<body>
+<body class="bg-[#F8FAFC]">
   <nav>
-    <div class="navbar bg-base-100 shadow-sm">
+    <div class="navbar bg-base-100 shadow-sm mb-10">
       <div class="navbar-start">
-        <div class="dropdown">
-          <ul
-            tabindex="-1"
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
-            <li><a>Item 1</a></li>
-            <li>
-              <a>Parent</a>
-              <ul class="p-2">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-            </li>
-            <li><a>Item 3</a></li>
-          </ul>
-        </div>
-        <a class="btn btn-ghost text-xl">daisyUI</a>
+        <a class="btn btn-ghost text-xl"><img class="h-full" src="./assets/github-logo.png" alt="" srcset="">GitHub Issues Tracker</a>
       </div>
       <div class="navbar-end gap-4">
         <label class="input">
-          <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <g
-              stroke-linejoin="round"
-              stroke-linecap="round"
-              stroke-width="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <path d="m21 21-4.3-4.3"></path>
-            </g>
-          </svg>
           <input type="search" required placeholder="Search" />
         </label>
-        <a class="btn">Button</a>
+        <a class="btn btn-primary">+ New Issue</a>
       </div>
     </div>
   </nav>
-  
+
+  <main>
+    <section class="container-filter-btn pb-2">
+      <div class="w-7/10 mx-auto p-6 gap-2 bg-white">
+        <button id="allButton" class="btn h-10 w-30 bg-white">All</button>
+        <button id="openButton" class="btn h-10 w-30 bg-white">Open</button>
+        <button id="closedButton" class="btn h-10 w-30 bg-white">Closed</button>
+      </div>
+    </section>
+    
+    <div class="container-head w-7/10 mx-auto flex justify-between items-center gap-4 h-full bg-white p-6 border-b-1">
+      <div class="c-head-left flex items-center gap-2">
+        <img class="h-full" src="./assets/Aperture.png" alt="" srcset="">
+        <div class="text">
+          <h1 id="total-issues" class="font-bold text-[20px]">50 Issues</h1>
+          <p class="text-gray"> Track and manage your project issues</p>
+        </div>
+      </div>
+      <div class="c-head-right flex gap-2 items-end">
+        <div class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-green-500"></span>
+          <p class="text-sm font-medium text-gray-700">Open</p>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <span class="h-2 w-2 rounded-full bg-purple-500"></span>
+          <p class="text-sm font-medium text-gray-700">Closed</p>
+        </div>
+      </div>
+    </div>
+
+    <section 
+      id="issues-container" 
+      class="bg-white p-10 w-7/10 mx-auto grid grid-cols-4 gap-5">
+        
+    </section>
+
+  </main>
 
   <script src="./js/home.js"></script>
   <script src="./js/index.js"></script>

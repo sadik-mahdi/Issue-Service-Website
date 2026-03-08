@@ -13,5 +13,4 @@ document.getElementById("login-btn").addEventListener("click",function(){
   }else{
     alert("login failed <br> <span>Enter correct username and password</span>");
   }
-
 });
