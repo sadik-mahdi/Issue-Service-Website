@@ -39,10 +39,10 @@
 
   <main>
     <section class="container-filter-btn pb-2">
-      <div class="w-7/10 mx-auto p-6 gap-2 bg-white">
-        <button id="allButton" class="btn h-10 w-30 bg-white">All</button>
-        <button id="openButton" class="btn h-10 w-30 bg-white">Open</button>
-        <button id="closedButton" class="btn h-10 w-30 bg-white">Closed</button>
+      <div class="w-7/10 mx-auto p-6 gap-2">
+        <button onclick="applyBtn(this)" id="allButton" class="btn h-10 w-30 bg-white">All</button>
+        <button onclick="applyBtn(this)" id="openButton" class="btn h-10 w-30 bg-white">Open</button>
+        <button onclick="applyBtn(this)" id="closedButton" class="btn h-10 w-30 bg-white">Closed</button>
       </div>
     </section>
     
@@ -50,7 +50,7 @@
       <div class="c-head-left flex items-center gap-2">
         <img class="h-full" src="./assets/Aperture.png" alt="" srcset="">
         <div class="text">
-          <h1 id="total-issues" class="font-bold text-[20px]">50 Issues</h1>
+          <h1 id="total-issues" class="font-bold text-[20px]"><span id="totalIssues">50</span> Issues</h1>
           <p class="text-gray"> Track and manage your project issues</p>
         </div>
       </div>
