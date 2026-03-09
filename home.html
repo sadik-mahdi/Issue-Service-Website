@@ -19,9 +19,9 @@
 
 <body class="bg-[#F6F8FA]">
   <nav class="bg-[#FFFFFF] border-b-[#D0D7DE] text-[#24292F]">
-    <div class="navbar bg-base-100 shadow-sm ">
+    <div class="navbar bg-base-100 shadow-sm">
       <div class="navbar-start">
-        <a class="btn btn-ghost text-xl"><img class="h-full" src="./assets/github-logo.png" alt="" srcset="">GitHub Issues Tracker</a>
+        <a class="btn btn-ghost text-xl"><img class="h-full" src="./assets/github-logo.png" alt="" srcset=""><span class="hidden md:block">GitHub Issues Tracker</span></a>
       </div>
       <div class="navbar-end gap-4">
         <label class="input">
@@ -34,7 +34,7 @@
 
   <main class="bg-[#F6F8FA]">
     <section class="container-filter-btn pb-2 bg-[#FF6B6B]">
-      <div class="w-7/10 mx-auto p-6 gap-2">
+      <div class="w-7/10 mx-auto p-6 gap-2  flex">
         <button onclick="applyBtn(this)" id="allButton" class="btn h-10 w-30 bg-white">All</button>
         <button onclick="applyBtn(this)" id="openButton" class="btn h-10 w-30 bg-white">Open</button>
         <button onclick="applyBtn(this)" id="closedButton" class="btn h-10 w-30 bg-white">Closed</button>
@@ -64,7 +64,7 @@
 
     <section 
       id="issues-container" 
-      class=" py-10 w-7/10 mx-auto grid grid-cols-4 gap-5 bg-[#F6F8FA]">
+      class=" py-10 w-7/10 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 bg-[#F6F8FA]">
         
     </section>
 
