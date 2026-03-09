@@ -50,7 +50,7 @@
       <div class="c-head-left flex items-center gap-2">
         <img class="h-full" src="./assets/Aperture.png" alt="" srcset="">
         <div class="text">
-          <h1 id="total-issues" class="font-bold text-[20px]"><span id="totalIssues">50</span> Issues</h1>
+          <h1 class="font-bold text-[20px]"><span id="totalIssues">50</span> Issues</h1>
           <p class="text-gray"> Track and manage your project issues</p>
         </div>
       </div>
@@ -71,6 +71,24 @@
       id="issues-container" 
       class="bg-white p-10 w-7/10 mx-auto grid grid-cols-4 gap-5">
         
+    </section>
+
+    <section>
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+      <dialog id="issue_Modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <div id="details_container">
+
+          </div>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
     </section>
 
   </main>

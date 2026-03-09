@@ -18,6 +18,19 @@ const applyBtn = (btn) => {
   btn.classList.add("btn-primary");
 };
 
+const loadIssueDetail= async(id) => {
+  const url = `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`;
+  const res = await fetch(url);
+  const details = await res.json();
+  displayIssueDetails(details.data);
+}
+const displayIssueDetails = (issue) => {
+  console.log(issue);
+  const detailsBox = document.getElementById("details_container");
+  detailsBox.innerHTML = 'hi ';
+  document.getElementById("issue_Modal").showModal();
+}
+
 const displayIssues = (issues) => {
   const issuesContainer = document.getElementById("issues-container");
   issuesContainer.innerHTML = "";
@@ -26,7 +39,7 @@ const displayIssues = (issues) => {
     const issueDiv = document.createElement("div");
 
     issueDiv.innerHTML = `
-      <div class="issue items-left h-[250px] border-${issue.status === "open" ? "green" : "purple"}-500 border-t-4 shadow-xl rounded-t-xl text-sm p-3 space-y-3">
+      <div onclick="loadIssueDetail(${issue.id})" id="issue_count" class="cursor-pointer issue items-left h-[250px] border-${issue.status === "open" ? "green" : "purple"}-500 border-t-4 shadow-xl rounded-t-xl text-sm p-3 space-y-3">
         <div class="space-y-3 h-[180px]">
           <div class="flex justify-between">
           <button><img src="${issue.status === "open" ? `./assets/Open-Status.png` :`./assets/Closed-Status.png`}" alt=""></button>
@@ -49,9 +62,21 @@ const displayIssues = (issues) => {
   };
 };
 
-const showAllIssues = () => displayIssues(issuesData);
-const showOpenIssues = () => displayIssues(issuesData.filter(i => i.status === "open"));
-const showClosedIssues = () => displayIssues(issuesData.filter(i => i.status === "closed"));
+const showAllIssues = () => {
+  displayIssues(issuesData)
+  const totalIssues = document.getElementById("totalIssues");
+  totalIssues.innerText = "50";
+};
+const showOpenIssues = () =>{
+  displayIssues(issuesData.filter(i => i.status === "open"));
+  const totalIssues = document.getElementById("totalIssues");
+  totalIssues.innerText = "44";
+}
+const showClosedIssues = () => {
+  displayIssues(issuesData.filter(i => i.status === "closed"));
+  const totalIssues = document.getElementById("totalIssues");
+  totalIssues.innerText = "6";
+}
 
 document.getElementById("allButton").addEventListener("click", () => { applyBtn(document.getElementById("allButton")); showAllIssues(); });
 document.getElementById("openButton").addEventListener("click", () => { applyBtn(document.getElementById("openButton")); showOpenIssues(); });
