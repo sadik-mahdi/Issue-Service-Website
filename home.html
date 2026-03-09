@@ -5,40 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Issue Tracker | Home</title>
 
-  <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
 
-  <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- tailwind CSS & Daisiui -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   
-  <!-- stylesheet -->
     <link rel="stylesheet" href="style/styles.css">
-    
-    
 </head>
-<body class="bg-[#F8FAFC]">
-  <nav>
-    <div class="navbar bg-base-100 shadow-sm mb-10">
+
+<body class="bg-[#F6F8FA]">
+  <nav class="bg-[#FFFFFF] border-b-[#D0D7DE] text-[#24292F]">
+    <div class="navbar bg-base-100 shadow-sm ">
       <div class="navbar-start">
         <a class="btn btn-ghost text-xl"><img class="h-full" src="./assets/github-logo.png" alt="" srcset="">GitHub Issues Tracker</a>
       </div>
       <div class="navbar-end gap-4">
         <label class="input">
-          <input type="search" required placeholder="Search" />
+          <input id="input-search" type="search" required placeholder="Search common Issue" class="w-[320px]" />
         </label>
-        <a class="btn btn-primary">+ New Issue</a>
+        <a id="btn-search" class="btn btn-primary">Search</a>
       </div>
     </div>
   </nav>
 
-  <main>
-    <section class="container-filter-btn pb-2">
+  <main class="bg-[#F6F8FA]">
+    <section class="container-filter-btn pb-2 bg-[#FF6B6B]">
       <div class="w-7/10 mx-auto p-6 gap-2">
         <button onclick="applyBtn(this)" id="allButton" class="btn h-10 w-30 bg-white">All</button>
         <button onclick="applyBtn(this)" id="openButton" class="btn h-10 w-30 bg-white">Open</button>
@@ -69,21 +64,19 @@
 
     <section 
       id="issues-container" 
-      class="bg-white p-10 w-7/10 mx-auto grid grid-cols-4 gap-5">
+      class=" p-10 w-7/10 mx-auto grid grid-cols-4 gap-5 bg-[#F6F8FA]">
         
     </section>
 
-    <section>
-      <!-- Open the modal using ID.showModal() method -->
-      <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
-      <dialog id="issue_Modal" class="modal modal-bottom sm:modal-middle">
-        <div class="modal-box">
-          <div id="details_container">
 
+    <section>
+      <dialog id="issue_Modal" class="modal modal-bottom sm:modal-middle ">
+        <div class="modal-box ">
+          <div id="details_container" class="">
+            
           </div>
           <div class="modal-action">
             <form method="dialog">
-              <!-- if there is a button in form, it will close the modal -->
               <button class="btn">Close</button>
             </form>
           </div>

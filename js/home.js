@@ -24,10 +24,44 @@ const loadIssueDetail= async(id) => {
   const details = await res.json();
   displayIssueDetails(details.data);
 }
+
+//  {
+// "id": 6,
+// "title": "Fix broken image uploads",
+// "description": "Users are unable to upload images larger than 5MB. Need to increase the file size limit or add compression.",
+// "status": "open",
+// "labels": [
+// "bug"
+// ],
+// "priority": "medium",
+// "author": "emma_ui",
+// "assignee": "",
+// "createdAt": "2024-01-19T15:30:00Z",
+// "updatedAt": "2024-01-19T15:30:00Z"
+// }
+
 const displayIssueDetails = (issue) => {
   console.log(issue);
   const detailsBox = document.getElementById("details_container");
-  detailsBox.innerHTML = 'hi ';
+  detailsBox.innerHTML = `
+    <div class="w-11/12 space-y-4 ">
+      <h2 class="text-2xl font-bold">${issue.title}</h2>
+      <div class="flex items-center j text-left gap-3">
+        <button class="bg-green-600 px-4 my-1 rounded-3xl text-xs text-white border-none ">${issue.status}</button>
+        <p class="text-[#64748B] text-xs font-[12px]">Opened by ${issue.author}</p>
+        <p class="text-[#64748B] text-xs font-[12px]">${issue.createdAt}</p>
+      </div>
+      <div>
+        <button class="bg-[#FECACA] px-2 py-1 rounded-4xl text-xs font-bold"><i class="fa-solid fa-bug"></i>Bug</button>
+        <button class="bg-[#FDE68A] px-2 py-1 rounded-4xl text-xs font-bold"><i class="fa-solid fa-life-ring"></i>help wanted</button>
+      </div>
+      <h3 class="text-[#64748B] text-xs">${issue.description}</h3>
+      <div class="flex justify-between">
+        <h3 class="text-left text-[#64748B] text-[16px]">Assignee: <br> <span class="font-bold ">${issue.assignee}</span></h3>
+        <h3 class="text-left">Priority: <br> <button class="text-white bg-red-400 rounded-xl px-4" >${issue.priority}</button>  </h3>
+      </div>
+    </div>
+  `;
   document.getElementById("issue_Modal").showModal();
 }
 
@@ -40,10 +74,10 @@ const displayIssues = (issues) => {
 
     issueDiv.innerHTML = `
       <div onclick="loadIssueDetail(${issue.id})" id="issue_count" class="cursor-pointer issue items-left h-[250px] border-${issue.status === "open" ? "green" : "purple"}-500 border-t-4 shadow-xl rounded-t-xl text-sm p-3 space-y-3">
-        <div class="space-y-3 h-[180px]">
+        <div class="space-y-3 h-[180px] space-y-3">
           <div class="flex justify-between">
-          <button><img src="${issue.status === "open" ? `./assets/Open-Status.png` :`./assets/Closed-Status.png`}" alt=""></button>
-          <p class="bg-[#FECACA] w-3/10 rounded-xl text-center">${issue.priority}</p>
+            <button><img src="${issue.status === "open" ? `./assets/Open-Status.png` :`./assets/Closed-Status.png`}" alt=""></button>
+            <p class="bg-[#FECACA] w-3/10 rounded-xl text-center">${issue.priority}</p>
           </div>
           <h2 class="font-semibold text-3.5">${issue.title}</h2>
           <p class="text-xs text-[#64748B]">${issue.description}</p>
@@ -61,6 +95,8 @@ const displayIssues = (issues) => {
   issuesContainer.append(issueDiv);  
   };
 };
+
+
 
 const showAllIssues = () => {
   displayIssues(issuesData)
@@ -83,3 +119,18 @@ document.getElementById("openButton").addEventListener("click", () => { applyBtn
 document.getElementById("closedButton").addEventListener("click", () => { applyBtn(document.getElementById("closedButton")); showClosedIssues(); });
 
 loadIssues();
+
+
+document.getElementById("btn-search").addEventListener("click", () => {
+  const input = document.getElementById("input-search");
+  const searchValue = input.value.trim().toLowerCase();
+  // console.log(searchValue);
+
+  fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
+    .then((res) => res.json())
+    .then((data) => {
+      const allIssues = data.data;
+      console.log(allIssues);
+      displayIssues(allIssues);
+    });
+})
