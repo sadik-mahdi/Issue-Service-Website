@@ -10,9 +10,9 @@ const loadIssues = () => {
 
 const applyBtn = (btn) => {
   const buttons = document.querySelectorAll(".container-filter-btn button");
-  buttons.forEach(b => {
-    b.classList.remove("btn-primary");
-    b.classList.add("bg-white");
+  buttons.forEach(button => {
+    button.classList.remove("btn-primary");
+    button.classList.add("bg-white");
   });
   btn.classList.remove("bg-white");
   btn.classList.add("btn-primary");
@@ -25,21 +25,6 @@ const loadIssueDetail= async(id) => {
   displayIssueDetails(details.data);
 }
 
-//  {
-// "id": 6,
-// "title": "Fix broken image uploads",
-// "description": "Users are unable to upload images larger than 5MB. Need to increase the file size limit or add compression.",
-// "status": "open",
-// "labels": [
-// "bug"
-// ],
-// "priority": "medium",
-// "author": "emma_ui",
-// "assignee": "",
-// "createdAt": "2024-01-19T15:30:00Z",
-// "updatedAt": "2024-01-19T15:30:00Z"
-// }
-
 const displayIssueDetails = (issue) => {
   console.log(issue);
   const detailsBox = document.getElementById("details_container");
@@ -47,18 +32,18 @@ const displayIssueDetails = (issue) => {
     <div class="w-11/12 space-y-4 ">
       <h2 class="text-2xl font-bold">${issue.title}</h2>
       <div class="flex items-center j text-left gap-3">
-        <button class="bg-green-600 px-4 my-1 rounded-3xl text-xs text-white border-none ">${issue.status}</button>
+        <button class="bg-green-600 px-2 py-1 rounded-3xl text-xs text-white border-none ">${issue.status}</button>
         <p class="text-[#64748B] text-xs font-[12px]">Opened by ${issue.author}</p>
         <p class="text-[#64748B] text-xs font-[12px]">${issue.createdAt}</p>
       </div>
       <div>
-        <button class="bg-[#FECACA] px-2 py-1 rounded-4xl text-xs font-bold"><i class="fa-solid fa-bug"></i>Bug</button>
-        <button class="bg-[#FDE68A] px-2 py-1 rounded-4xl text-xs font-bold"><i class="fa-solid fa-life-ring"></i>help wanted</button>
+        <button class="bg-[#FECACA] px-2 py-1 rounded-4xl text-xs font-bold"><i class="fa-solid fa-bug"></i>${issue.labels[0]}</button>
+        <button class="bg-[#FDE68A] px-2 py-1 rounded-4xl text-xs font-bold"><i class="fa-solid fa-life-ring"></i>${issue.labels[1]}</button>
       </div>
       <h3 class="text-[#64748B] text-xs">${issue.description}</h3>
-      <div class="flex justify-between">
-        <h3 class="text-left text-[#64748B] text-[16px]">Assignee: <br> <span class="font-bold ">${issue.assignee}</span></h3>
-        <h3 class="text-left">Priority: <br> <button class="text-white bg-red-400 rounded-xl px-4" >${issue.priority}</button>  </h3>
+      <div class="flex justify-between space-y-4">
+        <h3 class="text-left flex justify-left text-black text-[16px]">Assignee: <br> <span class="font-bold ">${issue.assignee}</span></h3>
+        <h3 class="text-left flex justify-left">Priority: <br> <button class="text-white px-2 py-1 bg-red-400 rounded-xl px-4" >${issue.priority}</button></h3>
       </div>
     </div>
   `;
@@ -96,8 +81,6 @@ const displayIssues = (issues) => {
   };
 };
 
-
-
 const showAllIssues = () => {
   displayIssues(issuesData)
   const totalIssues = document.getElementById("totalIssues");
@@ -114,17 +97,24 @@ const showClosedIssues = () => {
   totalIssues.innerText = "6";
 }
 
-document.getElementById("allButton").addEventListener("click", () => { applyBtn(document.getElementById("allButton")); showAllIssues(); });
-document.getElementById("openButton").addEventListener("click", () => { applyBtn(document.getElementById("openButton")); showOpenIssues(); });
-document.getElementById("closedButton").addEventListener("click", () => { applyBtn(document.getElementById("closedButton")); showClosedIssues(); });
+document.getElementById("allButton").addEventListener("click", () => { 
+  applyBtn(document.getElementById("allButton")); 
+  showAllIssues();
+});
+document.getElementById("openButton").addEventListener("click", () => { 
+  applyBtn(document.getElementById("openButton")); 
+  showOpenIssues(); 
+});
+document.getElementById("closedButton").addEventListener("click", () => { 
+  applyBtn(document.getElementById("closedButton")); 
+  showClosedIssues(); 
+});
 
 loadIssues();
-
 
 document.getElementById("btn-search").addEventListener("click", () => {
   const input = document.getElementById("input-search");
   const searchValue = input.value.trim().toLowerCase();
-  // console.log(searchValue);
 
   fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchValue}`)
     .then((res) => res.json())
